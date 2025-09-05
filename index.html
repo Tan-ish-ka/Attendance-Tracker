@@ -1,0 +1,189 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body> -->
+  <!-- Home Page -->
+  <!-- <div id="homePage" class="page active">
+    <div class="card">
+      <h1>📘 Attendance Tracker</h1>
+      <p>Select your role to continue:</p>
+      <button onclick="selectRole('student')">🎓 Student</button>
+      <button onclick="selectRole('teacher')">👨‍🏫 Teacher / CR</button>
+    </div>
+  </div> -->
+
+  <!-- Dashboard Page -->
+  <!-- <div id="dashboardPage" class="page">
+    <h2 id="welcomeTitle"></h2>
+    <button onclick="openDailyAttendance()">📅 Daily Attendance</button>
+    <button onclick="openWeeklyAttendance()">📊 Weekly Attendance</button>
+    <button onclick="openCriteriaPage()">📈 75% Criteria</button>
+    <button onclick="backToHome()">⬅ Logout</button>
+  </div> -->
+
+  <!-- Daily Attendance -->
+  <!-- <div id="dailyAttendancePage" class="page">
+    <h2>Daily Attendance</h2>
+    <div id="studentList"></div>
+    <button onclick="backToDashboard()">⬅ Back</button>
+  </div> -->
+
+  <!-- Weekly Attendance -->
+  <!-- <div id="weeklyAttendancePage" class="page">
+    <h2>Weekly Attendance</h2>
+    <div id="weeklyChart"></div>
+    <button onclick="backToDashboard()">⬅ Back</button>
+  </div> -->
+
+  <!-- 75% Criteria -->
+  <!-- <div id="criteriaPage" class="page">
+    <h2>75% Criteria</h2>
+    <p id="criteriaMessage"></p>
+    <button onclick="backToDashboard()">⬅ Back</button>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Home Page -->
+  <div id="homePage" class="page active">
+    <div class="card">
+      <h1>📘 Attendance Tracker</h1>
+      <p>Select your role to continue:</p>
+      <button id="studentBtn">🎓 Student</button>
+      <button id="teacherBtn">👨‍🏫 Teacher / CR</button>
+    </div>
+  </div>
+
+  <!-- Dashboard Page -->
+  <div id="dashboardPage" class="page">
+    <h2 id="welcomeTitle">Welcome</h2>
+    <div class="dashboard-buttons">
+      <button id="dailyBtn">📅 Daily Attendance</button>
+      <button id="weeklyBtn">📊 Weekly Attendance</button>
+      <button id="criteriaBtn">📈 75% Criteria</button>
+      <button id="addUserBtn">➕ Add User</button>
+      <button id="reviewBtn">🔍 Review Attendance</button>
+      <button id="subjectBtn">📚 Subject-wise Attendance</button>
+      <button id="batchBtn">👥 Manage Batches</button>
+      <button id="updateBtn">✏️ Update Attendance</button>
+      <button id="logoutBtn">⬅ Logout</button>
+    </div>
+  </div>
+
+  <!-- Daily Attendance -->
+  <div id="dailyAttendancePage" class="page">
+    <h2>Daily Attendance</h2>
+    <div id="studentList"></div>
+    <button class="backBtn" data-target="dashboardPage">⬅ Back</button>
+  </div>
+
+  <!-- Weekly Attendance -->
+  <div id="weeklyAttendancePage" class="page">
+    <h2>Weekly Attendance</h2>
+    <div id="weeklyChart"></div>
+    <button class="backBtn" data-target="dashboardPage">⬅ Back</button>
+  </div>
+
+  <!-- 75% Criteria -->
+  <div id="criteriaPage" class="page">
+    <h2>75% Criteria</h2>
+    <p id="criteriaMessage"></p>
+    <button class="backBtn" data-target="dashboardPage">⬅ Back</button>
+  </div>
+
+  <!-- Add User Page -->
+  <div id="addUserPage" class="page">
+    <h2>Add User</h2>
+    <form id="userForm">
+      <input name="name" type="text" placeholder="Name" required />
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="subjects" type="text" placeholder="Subjects (comma separated)" />
+      <button type="submit">Add</button>
+    </form>
+    <button class="backBtn" data-target="dashboardPage">⬅ Back</button>
+  </div>
+
+  <!-- Review Attendance Page -->
+  <div id="reviewPage" class="page">
+    <h2>Review Attendance</h2>
+    <input type="text" id="reviewStudentName" placeholder="Enter Student Name" />
+    <button id="checkReviewBtn">Check</button>
+    <div id="reviewResult"></div>
+    <button class="backBtn" data-target="dashboardPage">⬅ Back</button>
+  </div>
+
+  <!-- Subject-wise Attendance -->
+  <div id="subjectPage" class="page">
+    <h2>Subject-wise Attendance</h2>
+    <div id="subjectList"></div>
+    <button class="backBtn" data-target="dashboardPage">⬅ Back</button>
+  </div>
+
+  <!-- Batch Management -->
+  <div id="batchPage" class="page">
+    <h2>Manage Batches</h2>
+    <input type="text" id="batchName" placeholder="Batch Name" />
+    <button id="addBatchBtn">Add Batch</button>
+    <div id="batchList"></div>
+    <button class="backBtn" data-target="dashboardPage">⬅ Back</button>
+  </div>
+
+  <!-- Update Attendance -->
+  <div id="updatePage" class="page">
+    <h2>Update Attendance</h2>
+    <!-- <input type="text" id="updateStudentId" placeholder="Student ID" /> -->
+    <input type="text" id="updateSubject" placeholder="Subject" />
+    <select id="updateStatus">
+      <option value="present">Present</option>
+      <option value="absent">Absent</option>
+    </select>
+    <button id="updateBtnSubmit">Update</button>
+    <button class="backBtn" data-target="dashboardPage">⬅ Back</button>
+  </div>
+
+  <!-- Firebase SDKs -->
+   <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyB6rqVf8uwCqoyxCXq-Czvp_kRzRDY32Rw",
+    authDomain: "attendance-tracker-f44a7.firebaseapp.com",
+    projectId: "attendance-tracker-f44a7",
+    storageBucket: "attendance-tracker-f44a7.firebasestorage.app",
+    messagingSenderId: "137523138795",
+    appId: "1:137523138795:web:3dd4c08af4b6a62a1beeae",
+    measurementId: "G-JB884XN19Z"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const analytics = getAnalytics(app);
+
+  // Make Firestore available to app.js
+  window.db = db;
+  </script>
+
+  <!-- Main App Script -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
