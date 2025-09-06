@@ -10,18 +10,18 @@ import {
 
 // ⚡ Firebase Config (replace with yours)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyB6rqVf8uwCqoyxCXq-Czvp_kRzRDY32Rw",
+  authDomain: "attendance-tracker-f44a7.firebaseapp.com",
+  projectId: "attendance-tracker-f44a7",
+  storageBucket: "attendance-tracker-f44a7.firebasestorage.app",
+  messagingSenderId: "137523138795",
+  appId: "1:137523138795:web:3dd4c08af4b6a62a1beeae",
+  measurementId: "G-JB884XN19Z"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
+const analytics = getAnalytics(app);
 function App() {
   const [page, setPage] = useState("home");
   const [role, setRole] = useState(null);
